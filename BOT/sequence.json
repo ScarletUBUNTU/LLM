@@ -1,0 +1,14 @@
+{
+  "FORWARD": "Forward",
+  "BACKWARD": "Backward",
+  "LEFT": "Left",
+  "RIGHT": "Right",
+  "STAY": "Stay in place/Do nothing",
+  "DODGE": "Dodge",
+  "JUMP": "Jump",
+  "HEAL": "Heal",
+  "USE_ITEM": "Use item",
+  "ACTION": "Action to use",
+  "ATTACK": "Attack",
+  "DEFEND": "Defend"
+}

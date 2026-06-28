@@ -11,12 +11,14 @@ namespace LLM.NPCConversation
         public string description = "Describe how this trait affects dialogue.";
         [Range(0f, 1f)]
         public float intensity = 0.5f;
+        public bool isNegative = false;
 
         public override string ToString()
         {
+            var polarity = isNegative ? "Negative" : "Positive";
             return string.IsNullOrEmpty(traitName)
-                ? $"{description} ({intensity:F2})"
-                : $"{traitName} ({intensity:F2}): {description}";
+                ? $"{description} ({polarity}, {intensity:F2})"
+                : $"{traitName} ({polarity}, {intensity:F2}): {description}";
         }
     }
 }

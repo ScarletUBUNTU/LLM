@@ -1,0 +1,20 @@
+{
+  "name": "llm-game-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple dotnet-style scripts for building, running, and testing the bot project",
+  "scripts": {
+    "restore:bot": "dotnet restore \"BOT/Bot.csproj\" && dotnet restore \"Tests/BOT.Tests/BOT.Tests.csproj\"",
+    "build:bot": "dotnet build \"BOT/Bot.csproj\"",
+    "run:bot": "dotnet run --project \"BOT/Bot.csproj\"",
+    "test:bot": "dotnet test \"Tests/BOT.Tests/BOT.Tests.csproj\" --results-directory \"Tests/BOT.Tests/TestResults\"",
+    "test:bot:watch": "dotnet test \"Tests/BOT.Tests/BOT.Tests.csproj\" --results-directory \"Tests/BOT.Tests/TestResults\" --watch",
+
+
+    "restore:all": "npm run restore:",
+    "build:all": "npm run build:bot"
+
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

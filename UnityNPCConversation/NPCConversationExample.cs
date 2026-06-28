@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace LLM.NPCConversation
 {
     public class NPCConversationExample : MonoBehaviour

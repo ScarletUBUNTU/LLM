@@ -20,6 +20,9 @@ namespace LLM.NPCConversation
         public string currentGoal = "Assist the player or share rumors.";
 
         public List<NPCTrait> traits = new List<NPCTrait>();
+        public List<NPCTrait> assignedTraits = new List<NPCTrait>();
+        public List<BehavioralSkill> assignedSkills = new List<BehavioralSkill>();
+        public List<NPCStat> stats = new List<NPCStat>();
 
         public string BuildTraitSummary()
         {
@@ -43,7 +46,96 @@ namespace LLM.NPCConversation
                 }
             }
 
+            builder.AppendLine("Skills:");
+            if (assignedSkills.Count == 0)
+            {
+                builder.AppendLine("- None");
+            }
+            else
+            {
+                foreach (var skill in assignedSkills)
+                {
+                    builder.AppendLine($"- {skill}");
+                }
+            }
+
+            builder.AppendLine("Stats:");
+            if (stats.Count == 0)
+            {
+                builder.AppendLine("- None");
+            }
+            else
+            {
+                foreach (var stat in stats)
+                {
+                    builder.AppendLine($"- {stat}");
+                }
+            }
+            builder.AppendLine("Assigned Traits:");
+            if (assignedTraits.Count == 0)
+            {
+                builder.AppendLine("- None");
+            }
+            else
+            {
+                foreach (var assignedTrait in assignedTraits)
+                {
+                    builder.AppendLine($"- {assignedTrait}");
+                }
+            }
+
+            builder.AppendLine("Skills:");
+            if (assignedSkills.Count == 0)
+            {
+                builder.AppendLine("- None");
+            }
+            else
+            {
+                foreach (var skill in assignedSkills)
+                {
+                    builder.AppendLine($"- {skill}");
+                }
+            }
+
+            builder.AppendLine("Stats:");
+            if (stats.Count == 0)
+            {
+                builder.AppendLine("- None");
+            }
+            else
+            {
+                foreach (var stat in stats)
+                {
+                    builder.AppendLine($"- {stat}");
+                }
+            }
             return builder.ToString();
+        }
+
+        public void ApplyStatChanges(List<StatBonus> statBonuses)
+        {
+            if (statBonuses == null)
+            {
+                return;
+            }
+
+            foreach (var bonus in statBonuses)
+            {
+                if (string.IsNullOrEmpty(bonus.statName))
+                {
+                    continue;
+                }
+
+                var existing = stats.Find(s => s.statName == bonus.statName);
+                if (existing != null)
+                {
+                    existing.value += bonus.amount;
+                }
+                else
+                {
+                    stats.Add(new NPCStat { statName = bonus.statName, value = bonus.amount });
+                }
+            }
         }
     }
 }
